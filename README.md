@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/shinnn/rollup-config-module.svg?branch=master)](https://travis-ci.org/shinnn/rollup-config-module)
 [![devDependencies Status](https://david-dm.org/shinnn/rollup-config-module/dev-status.svg)](https://david-dm.org/shinnn/rollup-config-module?type=dev)
 
-[Rollup](https://github.com/rollup/rollup) config to create [Node](https://nodejs.org/) modules that support both [ECMAScript module](http://www.2ality.com/2014/09/es6-modules-final.html) and [CommonJS](http://www.commonjs.org/)
+[Rollup](https://github.com/rollup/rollup) config to create npm modules that support both [ECMAScript module](http://www.2ality.com/2014/09/es6-modules-final.html) and [CommonJS](http://www.commonjs.org/)
 
 ## Installation
 
@@ -46,7 +46,7 @@ npm install --save-dev rollup-config-module
 
 Modules built with this configuration can be used in both ES2015+ projects and traditional `require`-based projects.
 
-Users can load `module.js` with a build tool that supports `module` field, for example [rollup-plugin-node-resolve](https://github.com/rollup/rollup-plugin-node-resolve) and [Webpack 2](https://webpack.github.io/docs/roadmap.html#2).
+Users can load `module.js` with a build tool that supports `module` field, for example [rollup-plugin-node-resolve](https://github.com/rollup/rollup-plugin-node-resolve) and [Webpack](https://webpack.js.org/configuration/resolve/#resolve-mainfields).
 
 ```javascript
 import fn from 'awesome-npm-package';
@@ -93,6 +93,4 @@ module.exports = module$1;
 
 ## License
 
-Copyright (c) 2016 [Shinnosuke Watanabe](https://github.com/shinnn)
-
-Licensed under [the MIT License](./LICENSE).
+[Creative Commons Zero v1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/deed)

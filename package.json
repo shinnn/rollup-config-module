@@ -1,14 +1,14 @@
 {
   "name": "rollup-config-module",
   "version": "1.0.0",
-  "description": "Rollup config to create Node modules that support both ECMAScript module and CommonJS",
+  "description": "Rollup config to create npm modules that support both ECMAScript module and CommonJS",
   "repository": "shinnn/rollup-config-module",
   "author": "Shinnosuke Watanabe (https://github.com/shinnn)",
   "scripts": {
     "pretest": "eslint --fix .",
     "test": "node --throw-deprecation --track-heap-objects test.js"
   },
-  "license": "MIT",
+  "license": "CC0-1.0",
   "files": [
     "index.js"
   ],
