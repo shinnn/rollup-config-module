@@ -1,6 +1,6 @@
 {
 	"name": "rollup-config-module",
-	"version": "1.0.0",
+	"version": "2.0.0-0",
 	"description": "Rollup config to create npm modules that support both ECMAScript module and CommonJS",
 	"repository": "shinnn/rollup-config-module",
 	"author": "Shinnosuke Watanabe (https://github.com/shinnn)",
