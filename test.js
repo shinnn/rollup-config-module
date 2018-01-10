@@ -5,6 +5,7 @@ const {promisify} = require('util');
 
 const mkdirp = require('mkdirp');
 const readUtf8File = require('read-utf8-file');
+const rmfr = require('rmfr');
 const rollupCofigModule = require('.');
 const {rollup} = require('rollup');
 const test = require('tape');
@@ -36,7 +37,8 @@ test('rollup-config-module', async t => {
 
 	const tmp = join(__dirname, 'tmp');
 
-	await promisify(mkdirp)('tmp');
+	await rmfr(tmp);
+	await promisify(mkdirp)(tmp);
 	process.chdir(tmp);
 	await bundle.write(rollupCofigModule.output);
 
