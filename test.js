@@ -1,7 +1,13 @@
 'use strict';
 
-const rollupStream = require('rollup-stream');
-const simpleConcat = require('simple-concat');
+const {join} = require('path');
+const {promisify} = require('util');
+
+const mkdirp = require('mkdirp');
+const omit = require('lodash/fp/omit');
+const readUtf8File = require('read-utf8-file');
+const rollupCofigModule = require('.');
+const {rollup} = require('rollup');
 const test = require('tape');
 
 const expected = `'use strict';
@@ -12,17 +18,34 @@ var random = require('lodash/random');
 var filename = 'tmp';
 
 var module$1 = options => {
-  fs.writeFileSync(filename, random(), options);
+	fs.writeFileSync(filename, random(), options);
 };
 
 module.exports = module$1;
 `;
 
-test('rollup-config-module', t => {
-  t.plan(2);
+test('rollup-config-module', async t => {
+	const bundle = await rollup({
+		input: rollupCofigModule.input
+	});
 
-  simpleConcat(rollupStream(require.resolve('.')), (err, buf) => {
-    t.strictEqual(err, null, 'should be used as a Rollup config.');
-    t.strictEqual(String(buf), expected, 'should omit interoperable loading helper from output.');
-  });
+	t.deepEqual(
+		Object.keys(rollupCofigModule),
+		['input', 'file', 'format', 'interop'],
+		'should have 4 fields: `input`, `file`, `format` and `interop`.'
+	);
+
+	const tmp = join(__dirname, 'tmp');
+
+	await promisify(mkdirp)('tmp');
+	process.chdir(tmp);
+	await bundle.write(omit(['input'])(rollupCofigModule));
+
+	t.equal(
+		await readUtf8File(join(tmp, 'index.js')),
+		expected,
+		'should be a valid Rollup config.'
+	);
+
+	t.end();
 });
