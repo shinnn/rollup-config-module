@@ -17,11 +17,11 @@ var random = require('lodash/random');
 
 var filename = 'tmp';
 
-var module$1 = options => {
+var index = options => {
 	fs.writeFileSync(filename, random(), options);
 };
 
-module.exports = module$1;
+module.exports = index;
 `;
 
 test('rollup-config-module', async t => {

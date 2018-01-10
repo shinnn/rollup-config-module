@@ -5,8 +5,8 @@
 	"repository": "shinnn/rollup-config-module",
 	"author": "Shinnosuke Watanabe (https://github.com/shinnn)",
 	"scripts": {
-		"pretest": "eslint --fix .",
-		"test": "node --throw-deprecation --track-heap-objects test.js"
+		"pretest": "eslint --fix --ext=js,mjs .",
+		"test": "node test.js"
 	},
 	"license": "CC0-1.0",
 	"files": [

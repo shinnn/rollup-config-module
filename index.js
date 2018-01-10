@@ -1,5 +1,5 @@
 module.exports = {
-	input: 'module.js',
+	input: 'index.mjs',
 	file: 'index.js',
 	format: 'cjs',
 	interop: false

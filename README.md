@@ -1,6 +1,6 @@
 # rollup-config-module
 
-[![NPM version](https://img.shields.io/npm/v/rollup-config-module.svg)](https://www.npmjs.com/package/rollup-config-module)
+[![npm version](https://img.shields.io/npm/v/rollup-config-module.svg)](https://www.npmjs.com/package/rollup-config-module)
 [![Build Status](https://travis-ci.org/shinnn/rollup-config-module.svg?branch=master)](https://travis-ci.org/shinnn/rollup-config-module)
 [![devDependencies Status](https://david-dm.org/shinnn/rollup-config-module/dev-status.svg)](https://david-dm.org/shinnn/rollup-config-module?type=dev)
 
@@ -8,7 +8,7 @@
 
 ## Installation
 
-[Use npm.](https://docs.npmjs.com/cli/install)
+[Use](https://docs.npmjs.com/cli/install) [npm](https://docs.npmjs.com/getting-started/what-is-npm).
 
 ```
 npm install --save-dev rollup-config-module
@@ -27,18 +27,18 @@ npm install --save-dev rollup-config-module
   }
   ```
 2. Write your module using ECMAScript [`import`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/import) / [`export`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/export) instead of [`require`](https://nodejs.org/api/globals.html#globals_require) / [`module.exports`](https://nodejs.org/api/modules.html#modules_module_exports), and save it as `module.js`.
-3. Add [`module` field](https://github.com/dherman/defense-of-dot-js/blob/master/proposal.md#typical-usage) to `package.json` and let it point to `module.js`.
+3. Add [`module` field](https://github.com/dherman/defense-of-dot-js/blob/master/proposal.md#typical-usage) to `package.json` and let it point to `index.mjs`.
 
   ```json
   "module": "module.js"
   ```
 4. Run the build script and you'll see `index.js` is created.
-5. [Include](https://docs.npmjs.com/files/package.json#files) both `module.js` and `index.js` to the published npm package.
+5. [Include](https://docs.npmjs.com/files/package.json#files) both `index.mjs` and `index.js` to the published npm package.
 
   ```json
   "files": [
     "index.js",
-    "module.js"
+    "index.mjs"
   ]
   ```
 
@@ -58,7 +58,7 @@ Users can also load `index.js` via Node's built-in `require`,
 const fn = require('awesome-npm-package');
 ```
 
-because `index.js` has been compiled from `module.js` with all `import` and `export` replaced with `require` and `module.exports`.
+because `index.js` has been compiled from `index.mjs` with all `import` and `export` replaced with `require` and `module.exports`.
 
 ```javascript
 import {inspect} from 'util';
@@ -78,18 +78,14 @@ export default function(v) {
 var util = require('util');
 var isNaturalNumber = require('is-natural-number');
 
-var module$1 = function(v) {
+var index = function(v) {
   if (!isNaturalNumber(v)) {
     console.log(util.inspect(v) + 'is not a natural number.');
   }
 }
 
-module.exports = module$1;
+module.exports = index;
 ```
-
-## Reference
-
-[*In Defense of .js: A Proposal for Node.js Modules*](https://github.com/dherman/defense-of-dot-js/blob/master/proposal.md) by [Dave Herman](https://github.com/dherman)
 
 ## License
 
