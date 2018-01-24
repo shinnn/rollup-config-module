@@ -1,6 +1,6 @@
 {
 	"name": "rollup-config-module",
-	"version": "2.0.0-2",
+	"version": "2.0.0",
 	"description": "Rollup config to create npm modules that support both ECMAScript module and CommonJS",
 	"repository": "shinnn/rollup-config-module",
 	"author": "Shinnosuke Watanabe (https://github.com/shinnn)",
@@ -28,12 +28,12 @@
 	],
 	"devDependencies": {
 		"@shinnn/eslint-config-node": "^5.0.0",
-		"eslint": "^4.15.0",
+		"eslint": "^4.16.0",
 		"lodash": "^4.17.4",
 		"mkdirp": "^0.5.1",
-		"read-utf8-file": "^1.0.4",
+		"read-utf8-file": "^2.0.0",
 		"rmfr": "^1.0.8",
-		"rollup": "^0.53.4",
+		"rollup": "^0.55.0",
 		"tape": "^4.8.0"
 	},
 	"eslintConfig": {
