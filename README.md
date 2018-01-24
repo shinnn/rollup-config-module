@@ -2,7 +2,6 @@
 
 [![npm version](https://img.shields.io/npm/v/rollup-config-module.svg)](https://www.npmjs.com/package/rollup-config-module)
 [![Build Status](https://travis-ci.org/shinnn/rollup-config-module.svg?branch=master)](https://travis-ci.org/shinnn/rollup-config-module)
-[![devDependencies Status](https://david-dm.org/shinnn/rollup-config-module/dev-status.svg)](https://david-dm.org/shinnn/rollup-config-module?type=dev)
 
 [Rollup](https://github.com/rollup/rollup) config to create npm modules that support both [ECMAScript module](http://www.2ality.com/2014/09/es6-modules-final.html) and [CommonJS](http://www.commonjs.org/)
 
@@ -89,4 +88,4 @@ module.exports = index;
 
 ## License
 
-[Creative Commons Zero v1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/deed)
+[ISC License](./LICENSE) © 2018 Shinnosuke Watanabe
