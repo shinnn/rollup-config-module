@@ -2,10 +2,9 @@
 
 const {join} = require('path');
 const {promisify} = require('util');
+const {mkdir, readFile} = require('fs');
 
-const mkdirp = require('mkdirp');
-const readUtf8File = require('read-utf8-file');
-const rmfr = require('rmfr');
+const rimraf = require('rimraf');
 const rollupCofigModule = require('.');
 const {rollup} = require('rollup');
 const test = require('tape');
@@ -23,6 +22,7 @@ var index = options => {
 
 module.exports = index;
 `;
+const tmp = join(__dirname, 'tmp');
 
 test('rollup-config-module', async t => {
 	const bundle = await rollup({
@@ -35,15 +35,13 @@ test('rollup-config-module', async t => {
 		'should have 2 fields `input` and `output`.'
 	);
 
-	const tmp = join(__dirname, 'tmp');
-
-	await rmfr(tmp);
-	await promisify(mkdirp)(tmp);
+	await promisify(rimraf)(tmp);
+	await promisify(mkdir)(tmp);
 	process.chdir(tmp);
 	await bundle.write(rollupCofigModule.output);
 
 	t.equal(
-		await readUtf8File(join(tmp, 'index.js')),
+		await promisify(readFile)(join(tmp, 'index.js'), 'utf8'),
 		expected,
 		'should be a valid Rollup config.'
 	);

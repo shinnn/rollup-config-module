@@ -5,7 +5,7 @@
 	"repository": "shinnn/rollup-config-module",
 	"author": "Shinnosuke Watanabe (https://github.com/shinnn)",
 	"scripts": {
-		"pretest": "eslint --fix --ext=js,mjs .",
+		"pretest": "eslint .",
 		"test": "node test.js"
 	},
 	"license": "ISC",
@@ -27,14 +27,12 @@
 		"build"
 	],
 	"devDependencies": {
-		"@shinnn/eslint-config-node": "^5.0.0",
-		"eslint": "^4.16.0",
-		"lodash": "^4.17.4",
-		"mkdirp": "^0.5.1",
-		"read-utf8-file": "^2.0.0",
-		"rmfr": "^1.0.8",
-		"rollup": "^0.55.0",
-		"tape": "^4.8.0"
+		"@shinnn/eslint-config-node": "^6.0.0",
+		"eslint": "^5.4.0",
+		"lodash": "^4.17.10",
+		"rimraf": "^2.6.2",
+		"rollup": "^0.65.0",
+		"tape": "^4.9.1"
 	},
 	"eslintConfig": {
 		"extends": "@shinnn/node"
