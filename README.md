@@ -2,6 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/rollup-config-module.svg)](https://www.npmjs.com/package/rollup-config-module)
 [![Build Status](https://travis-ci.org/shinnn/rollup-config-module.svg?branch=master)](https://travis-ci.org/shinnn/rollup-config-module)
+[![Coverage Status](https://img.shields.io/coveralls/shinnn/rollup-config-module.svg)](https://coveralls.io/github/shinnn/rollup-config-module)
 
 [Rollup](https://github.com/rollup/rollup) config to create npm modules that support both [ECMAScript module](http://www.2ality.com/2014/09/es6-modules-final.html) and [CommonJS](http://www.commonjs.org/)
 
@@ -77,13 +78,11 @@ export default function(v) {
 var util = require('util');
 var isNaturalNumber = require('is-natural-number');
 
-var index = function(v) {
+module.exports = function(v) {
   if (!isNaturalNumber(v)) {
     console.log(util.inspect(v) + 'is not a natural number.');
   }
 }
-
-module.exports = index;
 ```
 
 ## License

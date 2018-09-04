@@ -4,11 +4,11 @@
 	"description": "Rollup config to create npm modules that support both ECMAScript module and CommonJS",
 	"repository": "shinnn/rollup-config-module",
 	"author": "Shinnosuke Watanabe (https://github.com/shinnn)",
+	"license": "ISC",
 	"scripts": {
 		"pretest": "eslint .",
-		"test": "node test.js"
+		"test": "nyc node test/test.js"
 	},
-	"license": "ISC",
 	"files": [
 		"index.js"
 	],
@@ -30,11 +30,15 @@
 		"@shinnn/eslint-config-node": "^6.0.0",
 		"eslint": "^5.4.0",
 		"lodash": "^4.17.10",
-		"rimraf": "^2.6.2",
+		"nyc": "^13.0.1",
+		"nyc-config-common": "^1.0.0",
 		"rollup": "^0.65.0",
 		"tape": "^4.9.1"
 	},
 	"eslintConfig": {
 		"extends": "@shinnn/node"
+	},
+	"nyc": {
+		"extends": "nyc-config-common"
 	}
 }
