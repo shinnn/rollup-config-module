@@ -27,16 +27,16 @@
 		"build"
 	],
 	"devDependencies": {
-		"@shinnn/eslint-config-node": "^6.0.0",
-		"eslint": "^5.5.0",
-		"lodash": "^4.17.10",
-		"nyc": "^13.0.1",
-		"nyc-config-common": "^1.0.0",
-		"rollup": "^0.65.0",
+		"@shinnn/eslint-config": "^6.8.0",
+		"eslint": "^5.8.0",
+		"lodash": "^4.17.11",
+		"nyc": "^13.1.0",
+		"nyc-config-common": "^1.0.1",
+		"rollup": "^0.67.0",
 		"tape": "^4.9.1"
 	},
 	"eslintConfig": {
-		"extends": "@shinnn/node"
+		"extends": "@shinnn"
 	},
 	"nyc": {
 		"extends": "nyc-config-common"
