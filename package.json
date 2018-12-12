@@ -26,13 +26,15 @@
 		"preset",
 		"build"
 	],
+	"dependencies": {
+		"eslint": "^5.10.0"
+	},
 	"devDependencies": {
-		"@shinnn/eslint-config": "^6.8.0",
-		"eslint": "^5.8.0",
+		"@shinnn/eslint-config": "^6.8.5",
 		"lodash": "^4.17.11",
 		"nyc": "^13.1.0",
 		"nyc-config-common": "^1.0.1",
-		"rollup": "^0.67.0",
+		"rollup": "^0.67.4",
 		"tape": "^4.9.1"
 	},
 	"eslintConfig": {

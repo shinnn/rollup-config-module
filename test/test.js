@@ -78,6 +78,12 @@ exports.x = x;
 	);
 
 	t.equal(
+		await getRollupResult('export-referred-before'),
+		'var arr = [1];\narr.ushift(Math.random());\n\nmodule.exports = arr;\n',
+		'should leave a variable declaration as is when the variable is referred before it\'s exported.'
+	);
+
+	t.equal(
 		await getRollupResult('uninitialized-export'),
 		'var x;\n\nmodule.exports = x;\n',
 		'should support a module exporting a variable with no initial value.'

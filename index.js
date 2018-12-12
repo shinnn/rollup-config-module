@@ -1,5 +1,23 @@
 'use strict';
 
+const {Linter} = require('eslint');
+
+const linter = new Linter();
+const linterConfig = {
+	parserOptions: {
+		ecmaVersion: 10
+	},
+	env: {
+		browser: true,
+		node: true,
+		worker: true,
+		serviceworker: true
+	},
+	rules: {
+		'no-undef': 'error'
+	}
+};
+
 module.exports = {
 	input: 'index.mjs',
 	output: {
@@ -10,28 +28,34 @@ module.exports = {
 	plugins: [
 		{
 			name: 'remove-unnecessary-use-strict-and-reduce-unnecessary-reassign',
-			generateBundle(outputOptions, bundle) {
-				const generated = bundle['index.js'];
+			generateBundle(outputOptions, {'index.js': generated}) {
+				let {code} = generated;
 
-				if (!generated.code.includes('function') && !generated.code.includes('=>')) {
-					generated.code = generated.code.replace(/^'use strict';\n*/u, '');
+				if (!code.includes('function') && !code.includes('=>')) {
+					code = code.replace(/^'use strict';\n*/u, '');
+					generated.code = code;
 				}
 
-				const {code} = generated;
 				const matchedModuleExports = /\nmodule\.exports = (\w+);\n/u.exec(code);
 
 				if (!matchedModuleExports) {
 					return;
 				}
 
-				const newCode = `${code.substring(0, matchedModuleExports.index)}${code.substring(matchedModuleExports.index + matchedModuleExports[0].length)}`;
-				const matchedDeclaration = new RegExp(`^(var ${matchedModuleExports[1]} = |(?=function ${matchedModuleExports[1]}\\())`, 'um').exec(newCode);
+				code = `${code.substring(0, matchedModuleExports.index)}${code.substring(matchedModuleExports.index + matchedModuleExports[0].length)}`;
+				const matchedDeclaration = new RegExp(`^(var ${matchedModuleExports[1]} = |(?=function ${matchedModuleExports[1]}\\())`, 'um').exec(code);
 
 				if (!matchedDeclaration) {
 					return;
 				}
 
-				generated.code = `${newCode.substring(0, matchedDeclaration.index)}module.exports = ${newCode.substring(matchedDeclaration.index + matchedDeclaration[0].length)}`;
+				code = `${code.substring(0, matchedDeclaration.index)}module.exports = ${code.substring(matchedDeclaration.index + matchedDeclaration[0].length)}`;
+
+				if (linter.verify(code, linterConfig).length !== 0) {
+					return;
+				}
+
+				generated.code = code;
 			}
 		}
 	]
